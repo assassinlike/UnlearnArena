@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unlearnarena"
+version = "0.1.0"
+description = "Attack-focused evaluation toolkit for unlearned language models."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "datasets>=2.18",
+  "joblib>=1.3",
+  "numpy>=1.24",
+  "scikit-learn>=1.3",
+  "torch>=2.0",
+  "tqdm>=4.66",
+  "transformers>=4.40",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+unlearnarena-eval = "unlearnarena.cli.eval_checkpoint:main"
+unlearnarena-sweep = "unlearnarena.cli.sweep_checkpoints:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
